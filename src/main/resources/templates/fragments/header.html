@@ -16,7 +16,7 @@
          <a class="right" th:href="@{/logout}">Logout</a>
          </span>
         <span sec:authorize="isAuthenticated()">
-             <a class="right">Welcome <span sec:authentication="name">name?</span></a>
+             <a class="right" th:text="#{keyHello}"> <span sec:authentication="name">name?</span></a>
          </span>
         <span sec:authorize="!isAuthenticated()">
         <a class="right" th:href="@{/login}" th:text="#{keyLogin}"></a>

@@ -9,10 +9,10 @@
 
 <div class="container">
     <div th:if="${param.error}">
-        <p class="alert-red">Invalid username and password</p>
+        <p class="alert-red" th:text="#{keyLog}"></p>
     </div>
     <div th:if="${param.logout}">
-        <p class="alert-green"> You have been successfully logged out</p>
+        <p class="alert-green" th:text="#{keyLogOut}"></p>
     </div>
 
     <form th:action="@{/login}" method="post">
