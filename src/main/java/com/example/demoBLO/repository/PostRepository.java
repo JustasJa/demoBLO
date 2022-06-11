@@ -1,5 +1,6 @@
 package com.example.demoBLO.repository;
 
+import com.example.demoBLO.model.Comment;
 import com.example.demoBLO.model.Post;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,4 +17,5 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     Collection<Post> findAllByOrderByCreationDateDesc();
 
     Optional<Post> findById(Long id);
+
 }

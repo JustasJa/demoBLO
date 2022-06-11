@@ -24,4 +24,5 @@ public class CommentServiceImpl implements CommentService{
     public void delete(Comment comment) {
         commentRepository.delete(comment);
     }
+
 }
