@@ -108,13 +108,20 @@ footer {
     margin-top: 20px;
 }
 
-.alert {
+.alert-red {
      padding: 20px;
      background-color: #f44336; /* Red */
      color: white;
-     margin: 15px 0;
+     margin: 15px auto;
+     width: 80%;
  }
-
+.alert-green {
+     padding: 20px;
+     background-color: green;
+     color: white;
+     margin: 15px auto;
+     width: 80%;
+ }
  a {
         color:black;
       text-decoration: none;
@@ -148,7 +155,7 @@ footer {
      background-color: #008CBA;
  }
 
- input[type=text], select {
+ input, select {
      width: 100%;
      padding: 12px 20px;
      margin: 8px 0;
