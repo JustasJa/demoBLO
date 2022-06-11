@@ -14,15 +14,17 @@ import java.util.stream.Collectors;
 @Data
 @Entity
 @Table(name = "posts")
+@SequenceGenerator(name = "post_seq_gen", sequenceName = "post_seq", initialValue = 10, allocationSize=1)
 public class Post {
 
     private static final int MIN_TITLE_LENGTH = 3;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "post_seq_gen")
     private Long id;
 
     @NotNull
+    @Length(min = MIN_TITLE_LENGTH, message = "Title must be at least " + MIN_TITLE_LENGTH + " characters long")
     @NotEmpty
     private String title;
 

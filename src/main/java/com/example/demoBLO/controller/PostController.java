@@ -24,6 +24,7 @@ public class PostController {
     @RequestMapping(value = "/post/{id}", method = RequestMethod.GET)
     public String getPost(@PathVariable Long id, Model model) {
         model.addAttribute("post", this.postService.getById(id).get());
+
         return "post";
     }
 }

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<header th:fragment="header">
+    <div class="topnav">
+        <a class="active" th:href="@{/}" th:text="#{keyHome}"></a>
+        <a class="right" th:href="@{/login}" th:text="#{keyLogin}"></a>
+        <a class="right" th:href="@{/signup}" th:text="#{keySign}"></a>
+        <a th:href="@{?lang=lt}">LT</a>
+        <a th:href="@{?lang=en}">EN</a>
+    </div>
+    <div class="header">
+        <h2 th:text="#{keyH2}"></h2>
+    </div>
+</header>
+
+</body>
+</html>
