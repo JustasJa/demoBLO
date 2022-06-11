@@ -24,12 +24,9 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String home(ModelMap model) {
-
-        model.addAttribute("posts", this.postService.getAll());
-
+    public String home(Model model) {
+        Collection<Post> posts = this.postService.getAll();
+        model.addAttribute("posts", posts);
         return "home";
     }
-
-
 }

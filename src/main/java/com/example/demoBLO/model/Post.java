@@ -17,14 +17,13 @@ import java.util.stream.Collectors;
 @SequenceGenerator(name = "post_seq_gen", sequenceName = "post_seq", initialValue = 10, allocationSize=1)
 public class Post {
 
-    private static final int MIN_TITLE_LENGTH = 3;
+    private static final int MIN_TITLE_LENGTH = 7;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "post_seq_gen")
     private Long id;
 
     @NotNull
-    @Length(min = MIN_TITLE_LENGTH, message = "Title must be at least " + MIN_TITLE_LENGTH + " characters long")
     @NotEmpty
     private String title;
 
@@ -34,7 +33,7 @@ public class Post {
 
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
-    @Column(insertable = false, nullable = false, updatable = false)
+    @Column(name = "creation_date", nullable = false, updatable = false)
     private Date creationDate;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
@@ -47,7 +46,7 @@ public class Post {
                 ", title='" + title + '\'' +
                 ", body='" + body + '\'' +
                 ", creationDate=" + creationDate +
-                ", comments=" + comments.stream().map(Comment::toString).collect(Collectors.joining(",")) +
+//                ", comments=" + comments.stream().map(Comment::toString).collect(Collectors.joining(",")) +
                 '}';
     }
 }

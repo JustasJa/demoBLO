@@ -13,11 +13,11 @@
           th:object="${comment}"
           method="post">
         <label>
-            <textarea th:field="*{body}" placeholder="Write something valuable"></textarea>
+            <textarea th:field="*{body}" placeholder=""></textarea>
             <div class="alert" th:if="${#fields.hasErrors('body')}" th:errors="*{body}">Body Error</div>
         </label>
         <div>
-            <button type="submit" th:text="#{keySend}"></button>
+            <button class="green-btn" type="submit" th:text="#{keySend}"></button>
         </div>
     </form>
 

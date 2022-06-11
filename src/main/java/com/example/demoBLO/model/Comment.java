@@ -19,7 +19,6 @@ public class Comment {
     private Long id;
 
     @Column(columnDefinition = "TEXT", nullable = false)
-    @NotEmpty
     private String body;
 
     @Temporal(TemporalType.TIMESTAMP)

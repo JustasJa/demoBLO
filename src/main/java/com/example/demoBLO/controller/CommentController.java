@@ -36,7 +36,7 @@ public class CommentController {
             Comment comment = new Comment();
             comment.setPost(postOptional.get());
             model.addAttribute(comment);
-            return "comment";
+            return "commentForm";
         } else {
             return "error";
         }
@@ -45,11 +45,11 @@ public class CommentController {
     @PostMapping("/comment")
     public String validateComment(@Valid @ModelAttribute Comment comment, BindingResult bindingResult, SessionStatus sessionStatus) {
         if (bindingResult.hasErrors()) {
-            System.err.println("Klaida");
-            return "comment";
+            return "commentForm";
         }
         this.commentService.save(comment);
         sessionStatus.setComplete();
         return "redirect:/post/" + comment.getPost().getId();
     }
+
 }

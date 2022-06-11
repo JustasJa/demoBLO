@@ -11,9 +11,9 @@
     <div class="posts_wrapper">
         <div class="post" th:each="post : ${posts}">
             <h2><a th:href="@{'/post/' + ${post.id}}" th:text="${post.title}">Title</a></h2>
-            <h5 th:text="#{keyPost} +' '+ ${#dates.format(post.creationDate, 'yyyy MMMM dd')}"></h5>
             <div class="img" th:text="#{keyImg}"></div>
             <p th:text="${post.body}">body text</p>
+            <h5 th:text="#{keyPost} +' '+ ${#dates.format(post.creationDate, 'yyyy MMMM dd')}"></h5>
             <br>
         </div>
     </div>

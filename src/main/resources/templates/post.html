@@ -8,9 +8,14 @@
 <div class="container">
     <div class="post">
         <h2 th:text="${post.title}">Title</h2>
-        <h5 th:text="#{keyPost} + ' ' + ${#dates.format(post.creationDate, 'yyyy MMMM dd')}"></h5>
         <div class="img" th:text="#{keyImg}"></div>
         <p th:text="${post.body}">body text</p>
+        <h5 th:text="#{keyPost} + ' ' + ${#dates.format(post.creationDate, 'yyyy MMMM dd')}"></h5>
+        <div class="align-right">
+            <a th:href="@{'/editPost/{id}'(id=${post.id})}">
+                <button class="green-btn blue-btn" type="button" th:text="#{keyEdit}">Edit</button>
+            </a>
+        </div>
     </div>
     <div class="comments">
         <h2 th:text="#{keyCom}"></h2>
@@ -19,12 +24,10 @@
             <p th:text="${comment.body}">Body</p>
         </div>
     </div>
-    <form th:action="@{'/comment/{id}'(id=${post.id})}" method="get">
-        <button type="submit" th:text="#{keyComSub}"></button>
-    </form>
-
 </div>
-
+<form th:action="@{'/comment/{id}'(id=${post.id})}" method="get">
+    <button class="green-btn" type="submit" th:text="#{keyComSub}"></button>
+</form>
 <footer th:replace="/fragments/footer :: footer"></footer>
 
 </body>
