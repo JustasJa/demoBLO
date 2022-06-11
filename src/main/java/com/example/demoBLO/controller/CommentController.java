@@ -5,6 +5,7 @@ import com.example.demoBLO.model.Post;
 import com.example.demoBLO.service.CommentService;
 import com.example.demoBLO.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,7 +29,7 @@ public class CommentController {
         this.postService = postService;
         this.commentService = commentService;
     }
-
+    @Secured("ROLE_USER")
     @GetMapping("/comment/{id}")
     public String showComment(@PathVariable Long id, Model model) {
         Optional<Post> postOptional = this.postService.getById(id);
@@ -41,7 +42,7 @@ public class CommentController {
             return "error";
         }
     }
-
+    @Secured("ROLE_USER")
     @PostMapping("/comment")
     public String validateComment(@Valid @ModelAttribute Comment comment, BindingResult bindingResult, SessionStatus sessionStatus) {
         if (bindingResult.hasErrors()) {

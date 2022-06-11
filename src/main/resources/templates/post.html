@@ -14,7 +14,7 @@
         <p th:text="${post.body}">body text</p>
         <h5 th:text="#{keyPost} + ' ' + ${#dates.format(post.creationDate, 'yyyy MMMM dd')}"></h5>
 
-        <div class="align-right" sec:authorize="hasRole('ROLE_ADMIN')">
+        <div class="align-right" sec:authorize="hasRole('ROLE_USER')">
             <a th:href="@{'/editPost/{id}'(id=${post.id})}">
                 <button class="green-btn blue-btn" type="button" th:text="#{keyEdit}">Edit</button>
             </a>

@@ -6,6 +6,7 @@ import com.example.demoBLO.model.Post;
 import com.example.demoBLO.service.CommentService;
 import com.example.demoBLO.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -39,14 +40,14 @@ public class PostController {
             return "404";
         }
     }
-
+    @Secured("ROLE_USER")
     @GetMapping("/createNewPost")
     public String createNewPost(Model model) {
         Post post = new Post();
         model.addAttribute("post", post);
         return "postForm";
     }
-
+    @Secured("ROLE_USER")
     @PostMapping("/createNewPost")
     public String createNewPost(@Valid @ModelAttribute Post post, BindingResult bindingResult, SessionStatus sessionStatus) {
         if (bindingResult.hasErrors()) {
@@ -56,6 +57,7 @@ public class PostController {
         sessionStatus.setComplete();
         return "redirect:/post/" + post.getId();
     }
+    @Secured("ROLE_USER")
     @GetMapping("editPost/{id}")
     public String editPost(@PathVariable Long id, Model model) {
 
@@ -68,7 +70,7 @@ public class PostController {
         }
         return "error";
     }
-
+    @Secured("ROLE_USER")
     @GetMapping("/deletePost/{id}")
     public String deletePost(@PathVariable Long id) {
 
