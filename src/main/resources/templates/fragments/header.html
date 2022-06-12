@@ -7,7 +7,7 @@
 </head>
 <body>
 <header th:fragment="header">
-    <div class="topnav" id="myTopnav">
+    <div class="topnav">
         <a th:href="@{/}" th:text="#{keyHome}"></a>
         <span sec:authorize="hasRole('ROLE_USER')">
         <a class="left" th:href="@{/createNewPost}" th:text="#{keyNewPost}" ></a>
